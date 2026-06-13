@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV – Selvia Eka Nandira</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --coral:   #E8614D;
+    --coral-light: #FDECEA;
+    --navy:    #1A2340;
+    --slate:   #4A5568;
+    --silver:  #A0AEC0;
+    --bg:      #F7F8FA;
+    --white:   #FFFFFF;
+    --accent-line: #E8614D;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+    min-height: 100vh;
+    padding: 32px 16px;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(26,35,64,0.10);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 32px;
+    padding: 48px 52px 40px;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(232,97,77,0.18);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(232,97,77,0.10);
+  }
+
+  .header-text { position: relative; z-index: 1; }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .title-badge {
+    display: inline-block;
+    background: var(--coral);
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255,255,255,0.78);
+    font-size: 0.83rem;
+    font-weight: 400;
+  }
+
+  .contact-item svg { flex-shrink: 0; opacity: 0.85; }
+
+  .avatar-wrap {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .avatar-ring {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--coral);
+    padding: 4px;
+    background: var(--navy);
+  }
+
+  .avatar-inner {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c9d6df, #e2ebf0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    color: var(--navy);
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
+  }
+
+  /* ── BODY ── */
+  .body {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: #F0F2F8;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .side-section-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .side-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: var(--coral);
+    opacity: 0.25;
+  }
+
+  /* Skills */
+  .skill-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .skill-item { display: flex; flex-direction: column; gap: 4px; }
+
+  .skill-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .skill-bar {
+    height: 5px;
+    background: rgba(26,35,64,0.12);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--coral), #f09080);
+    border-radius: 3px;
+  }
+
+  /* Soft Skills chips */
+  .chip-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+
+  .chip {
+    background: var(--white);
+    border: 1.5px solid rgba(232,97,77,0.25);
+    color: var(--navy);
+    font-size: 0.74rem;
+    font-weight: 500;
+    padding: 5px 11px;
+    border-radius: 20px;
+    line-height: 1;
+  }
+
+  /* Education */
+  .edu-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .edu-sub {
+    font-size: 0.78rem;
+    color: var(--slate);
+    margin-bottom: 1px;
+  }
+
+  .edu-year {
+    font-size: 0.74rem;
+    color: var(--silver);
+  }
+
+  /* Profile summary in sidebar */
+  .profile-text {
+    font-size: 0.82rem;
+    color: var(--slate);
+    line-height: 1.65;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .section-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: var(--coral);
+    opacity: 0.2;
+  }
+
+  /* Experience */
+  .exp-list { display: flex; flex-direction: column; gap: 24px; }
+
+  .exp-item { position: relative; padding-left: 18px; }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 7px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+    box-shadow: 0 0 0 3px rgba(232,97,77,0.18);
+  }
+
+  .exp-item::after {
+    content: '';
+    position: absolute;
+    left: 3.5px; top: 20px;
+    width: 1px;
+    bottom: -24px;
+    background: rgba(232,97,77,0.18);
+  }
+
+  .exp-item:last-child::after { display: none; }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 2px;
+  }
+
+  .exp-company {
+    font-size: 0.93rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .exp-date {
+    font-size: 0.74rem;
+    color: var(--coral);
+    font-weight: 600;
+    white-space: nowrap;
+    background: var(--coral-light);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .exp-role {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+
+  .exp-bullets li {
+    font-size: 0.82rem;
+    color: var(--slate);
+    line-height: 1.55;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-weight: 700;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-text">
+      <div class="title-badge">Front Liner &amp; Kasir</div>
+      <h1 class="name">Selvia Eka<br>Nandira</h1>
+      <div class="contact-row">
+        <span class="contact-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Bekasi, Jawa Barat 17132
+        </span>
+        <span class="contact-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +62 857 8203 9152
+        </span>
+        <span class="contact-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          selvianandira2@gmail.com
+        </span>
+        <span class="contact-item">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          Selvia Eka Nandira
+        </span>
+      </div>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar-ring">
+        <div class="avatar-inner">S</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div>
+        <div class="side-section-title">Profil</div>
+        <p class="profile-text">
+          Profesional berpengalaman di bidang F&amp;B dengan rekam jejak yang kuat sebagai Kasir dan Front Liner. Terampil dalam pelayanan pelanggan, operasional POS, dan manajemen tim. Cepat beradaptasi, komunikatif, dan berorientasi pada kepuasan pelanggan.
+        </p>
+      </div>
+
+      <div>
+        <div class="side-section-title">Kompetensi Teknis</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <span class="skill-label">Sistem ESB POS</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Microsoft Excel</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Microsoft Word</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Bahasa Inggris</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Kasir Pintar App</span>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="side-section-title">Soft Skills</div>
+        <div class="chip-grid">
+          <span class="chip">Kerjasama Tim</span>
+          <span class="chip">Komunikasi</span>
+          <span class="chip">Manajemen Waktu</span>
+          <span class="chip">Fast Learner</span>
+          <span class="chip">Problem Solving</span>
+          <span class="chip">Upselling</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="side-section-title">Pendidikan</div>
+        <div class="edu-title">SMAN 01 Rengasdengklok</div>
+        <div class="edu-sub">Jurusan IPA</div>
+        <div class="edu-year">2017 – 2020</div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <section>
+        <div class="section-title">Pengalaman Kerja</div>
+        <div class="exp-list">
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">PT. Pesta Pora Abadi / Mie Gacoan</span>
+              <span class="exp-date">Mei 2025 – Sekarang</span>
+            </div>
+            <div class="exp-role">Cashier · Bekasi, Indonesia</div>
+            <ul class="exp-bullets">
+              <li>Bertanggung jawab atas operasional harian kasir untuk memastikan layanan yang lancar dan efisien sesuai standar perusahaan.</li>
+              <li>Memimpin dan membimbing anggota tim, menciptakan lingkungan kerja yang produktif dan berorientasi pada performa tinggi.</li>
+              <li>Menangani keluhan pelanggan secara profesional dan mengubahnya menjadi pengalaman positif guna meningkatkan kepuasan pelanggan.</li>
+              <li>Mengoperasikan sistem kasir ESB POS dalam proses pembelian menu dan pembayaran transaksi secara akurat.</li>
+              <li>Mengelola penjadwalan staf, kontrol inventaris, dan alur kerja operasional untuk mendukung efisiensi bisnis.</li>
+              <li>Menghitung dan melaporkan sales toko per-shift serta berkolaborasi dengan manajemen untuk mencapai target bisnis.</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">Rumah Cemilan</span>
+              <span class="exp-date">Agu 2023 – Feb 2025</span>
+            </div>
+            <div class="exp-role">Cashier · Karawang, Indonesia</div>
+            <ul class="exp-bullets">
+              <li>Memberikan pelayanan prima kepada pelanggan dan memastikan ketersediaan bahan operasional setiap hari.</li>
+              <li>Mengelola sosial media toko untuk meningkatkan visibilitas dan engagement dengan pelanggan.</li>
+              <li>Mengoperasikan aplikasi kasir pintar dalam proses transaksi pembelian menu secara tepat dan efisien.</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">Cafe Mr. 215</span>
+              <span class="exp-date">Mar 2023 – Agu 2023</span>
+            </div>
+            <div class="exp-role">Barista · Karawang, Indonesia</div>
+            <ul class="exp-bullets">
+              <li>Melayani pelanggan, menawarkan menu, serta menyajikan berbagai jenis makanan dan minuman dengan standar kualitas tinggi.</li>
+              <li>Menghitung ketersediaan stok bahan dan membuat laporan keuangan harian serta bulanan.</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">CV. Mitsutama</span>
+              <span class="exp-date">Jul 2022 – Des 2022</span>
+            </div>
+            <div class="exp-role">Admin · Cikarang, Indonesia</div>
+            <ul class="exp-bullets">
+              <li>Mengelola dan memasukkan data pre-order dari email ke Microsoft Excel secara akurat dan tepat waktu.</li>
+              <li>Membantu pembuatan surat jalan dan faktur pajak untuk mendukung kelancaran operasional logistik.</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">PT. Bona Amiko Kreasi</span>
+              <span class="exp-date">Sep 2020 – Des 2020</span>
+            </div>
+            <div class="exp-role">Helper Production · Cikarang, Indonesia</div>
+            <ul class="exp-bullets">
+              <li>Membantu staf sewing dalam pengerjaan produksi garmen secara teliti dan efisien.</li>
+              <li>Mengkoordinasikan alur kerja dengan tim produksi untuk mencapai target harian yang ditetapkan.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>
